@@ -1,2 +1,2 @@
-# di
+# Arikaim DI
 Dependency Injection Container
