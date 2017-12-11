@@ -5,7 +5,6 @@
  * @link        http://www.arikaim.com
  * @copyright   Copyright (c) Konstantin Atanasov <info@arikaim.com>
  * @license     MIT License
- * 
  */
 
 namespace Arikaim\Cotainer;
@@ -21,7 +20,7 @@ class Container implements ContainerInterface
 {    
     private $services;
 
-    public function __construct(array $services)
+    public function __construct(array $services = null)
     {        
         if ( is_array($this->services) == true ) {
             $this->services = $services;
