@@ -1,4 +1,12 @@
 <?php
+/**
+ * Arikaim DI
+ * Dependency injection container component
+ * @link        http://www.arikaim.com
+ * @copyright   Copyright (c) Konstantin Atanasov <info@arikaim.com>
+ * @license     MIT License
+ * 
+ */
 
 namespace Arikaim\Cotainer;
 
@@ -11,7 +19,7 @@ use Psr\Container\ContainerInterface;
  */
 class Container implements ContainerInterface
 {    
-    protected $services;
+    private $services;
 
     public function __construct(array $services)
     {        
@@ -22,11 +30,10 @@ class Container implements ContainerInterface
 
     public function get($id)
     {
-        if ( isset($this->services[$id]) == true ) {
+        if ( $this->has($id) == true ) {
             return $this->services[$id];
-        } else {
-            throw new \Exception(sprintf('Service "%s" is not exists.', $id));
-        }
+        } 
+        throw new \Exception(sprintf('Service "%s" is not exists.', $id));       
     }
 
     public function has($id)
@@ -36,7 +43,14 @@ class Container implements ContainerInterface
 
     public function addService($id, $service)
     {
+        if ( $this->has($id) == true ) {
+            // service exists exception
+        }
+    }
 
+    public function replaceService($id, $service)
+    {
+        $this->service[$id] = $service;
     }
 }
 ?>
