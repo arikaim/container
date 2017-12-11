@@ -3,14 +3,13 @@
 namespace Arikaim\Cotainer;
 
 
-use Interop\Container\ContainerInterface as InteropContainer;
-use Psr\Container\ContainerInterface as Psr11Container;
+use Psr\Container\ContainerInterface;
 
 
 /**
  * Dependency injection container.
  */
-class Container implements InteropContainer
+class Container implements ContainerInterface
 {    
     protected $services;
 
