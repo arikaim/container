@@ -24,7 +24,8 @@ echo $config;
      echo "service_2 not exist";
  }
 
- unset( $container['config'] );
- $config = $container['config'];
- echo $config;
+ $services_list = $container->getServicesList();
+ foreach ($services_list as $value) {
+     echo "$value ";
+ }
 ?>

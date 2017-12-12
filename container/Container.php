@@ -76,6 +76,11 @@ class Container implements ContainerInterface, \ArrayAccess
         unset($this->services[$id]);
     }
 
+    public function getServicesList()
+    {
+        return array_keys($this->services);
+    }
+
     public function offsetExists($id)
     {
         return  isset($this->services[$id]);
