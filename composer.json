@@ -1,5 +1,18 @@
 {
+    "name": "arikaim/di",
+    "type": "library",
+    "description": "Dependency Injection Container",
+    "keywords": ["dependency injection", "container"],
+    "homepage": "http://arikaim.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Konstantin Atanasov",
+            "email": "sales@intersoft.biz"
+        }
+    ],
     "require": {
+        "php": ">=5.6.0",
         "psr/container": "^1.0"
     }
 }
