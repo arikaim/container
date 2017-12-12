@@ -1,6 +1,7 @@
 {
     "name": "arikaim/di",
     "type": "library",
+    "version": "1.0",
     "description": "Dependency Injection Container",
     "keywords": ["dependency injection", "container"],
     "homepage": "http://arikaim.com",
@@ -14,5 +15,6 @@
     "require": {
         "php": ">=5.6.0",
         "psr/container": "^1.0"
-    }
+    },
+    "minimum-stability": "stable"
 }
