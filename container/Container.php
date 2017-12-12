@@ -7,10 +7,11 @@
  * @license     MIT License
  */
 
-namespace Arikaim\Cotainer;
+namespace Arikaim\Container;
 
-use Arikaim\Cotainer\ServiceNotFoundException;
-use Arikaim\Cotainer\ServiceExistsException;
+
+use Arikaim\Container\ServiceNotFoundException;
+use Arikaim\Container\ServiceExistsException;
 use Psr\Container\ContainerInterface;
 
 
@@ -67,7 +68,7 @@ class Container implements ContainerInterface, \ArrayAccess
 
     private function set($id, $service)
     {
-        $this->service[$id] = $service;
+        $this->services[$id] = $service;
     }
 
     public function remove($id)
@@ -75,22 +76,22 @@ class Container implements ContainerInterface, \ArrayAccess
         unset($this->services[$id]);
     }
 
-    public function offsetExists(mixed $id)
+    public function offsetExists($id)
     {
         return $this->has($id);
     }
 
-    public function offsetGet(mixed $id)
+    public function offsetGet($id)
     {
         return $this->get($id);
     }
 
-    public function offsetSet(mixed $id, mixed $value)
+    public function offsetSet($id, $service)
     {
-        $this->set($id,$value);
+        $this->services[$id] = $service;
     }
 
-    public function offsetUnset(mixed $id)
+    public function offsetUnset($id)
     {
        $this->remove($id);
     }
