@@ -11,12 +11,20 @@ $container['service'] = function() {
     echo "Service test";
 };
 
-//print_r($container);
+$container->add("config","Config Value");
 
-$service = $container->get('service_1');
 
-//var_dump($service);
-
+$service = $container->get('service');
 $service();
 
+$config = $container['config'];
+echo $config;
+
+ if ( $container->has('servie_2') == false) {
+     echo "service_2 not exist";
+ }
+
+ unset( $container['config'] );
+ $config = $container['config'];
+ echo $config;
 ?>

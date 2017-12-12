@@ -52,7 +52,7 @@ class Container implements ContainerInterface, \ArrayAccess
         return isset($this->services[$id]);
     }
 
-    public function addService($id, $service, $replace = false)
+    public function add($id, $service, $replace = false)
     {
         if ( ($this->has($id) == true) && ($replace == false) ) {           
             throw new ServiceExistsException($id);
@@ -61,9 +61,9 @@ class Container implements ContainerInterface, \ArrayAccess
         return true;
     }
 
-    public function replaceService($id,$service)
+    public function replace($id,$service)
     {
-        return $this->addService($id,$service,true);
+        return $this->add($id,$service,true);
     }
 
     private function set($id, $service)
@@ -78,12 +78,12 @@ class Container implements ContainerInterface, \ArrayAccess
 
     public function offsetExists($id)
     {
-        return $this->has($id);
+        return  isset($this->services[$id]);
     }
 
     public function offsetGet($id)
     {
-        return $this->get($id);
+        return $this->has($id) ? $this->services[$id] : null;
     }
 
     public function offsetSet($id, $service)
