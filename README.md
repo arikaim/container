@@ -8,6 +8,7 @@ composer require arikaim/container
 
 # Usage 
 
+```php 
 use Arikaim\Container\Container;
 
 $container = new Container();
@@ -39,3 +40,5 @@ if ( $container->has('service') ) {
 } else {
     echo "Service not found";
 }
+
+```

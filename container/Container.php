@@ -17,6 +17,8 @@ use Psr\Container\ContainerInterface;
 
 /**
  * Dependency injection container.
+ * 
+ * @implements ContainerInterface, \ArrayAccess
  */
 class Container implements ContainerInterface, \ArrayAccess 
 {    
@@ -47,11 +49,26 @@ class Container implements ContainerInterface, \ArrayAccess
         return null; 
     }
 
+    /**
+     * Check if service exists in container PSR-11 ContainerInterface
+     * 
+     * @param [string] $id
+     * @return boolean
+     */
     public function has($id)
     {
         return isset($this->services[$id]);
     }
 
+    /**
+     * Add service to container
+     *
+     * @param [string] $id - id of service 
+     * @param [mixed] $service service value 
+     * @param boolean $replace replace service if exists 
+     * @return void
+     * @throws ServiceExistsException - if replace is false and  service exists in container
+     */
     public function add($id, $service, $replace = false)
     {
         if ( ($this->has($id) == true) && ($replace == false) ) {           
@@ -61,44 +78,87 @@ class Container implements ContainerInterface, \ArrayAccess
         return true;
     }
 
+    /**
+     * Replace service in container
+     *
+     * @param [string] $id - service id 
+     * @param [type] $service -service value
+     * @return void
+     */
     public function replace($id,$service)
     {
         return $this->add($id,$service,true);
     }
 
-    private function set($id, $service)
-    {
-        $this->services[$id] = $service;
-    }
-
+    /**
+     * Remove service from container
+     *
+     * @param [string] $id - service id
+     * @return void
+     */
     public function remove($id)
     {
         unset($this->services[$id]);
     }
 
+    /**
+     * Get array with all service id in container
+     *
+     * @return array
+     */
     public function getServicesList()
     {
         return array_keys($this->services);
     }
 
+    /**
+     * ArrayAccess interface function
+     *
+     * @param [string] $id - service id
+     * @return bool
+     */
     public function offsetExists($id)
     {
         return  isset($this->services[$id]);
     }
 
+    /**
+     * ArrayAccess interface function
+     *
+     * @param [string] $id - service id
+     * @return mixed
+     */
     public function offsetGet($id)
     {
         return $this->has($id) ? $this->services[$id] : null;
     }
 
+    /**
+     * ArrayAccess interface function
+     *
+     * @param [string] $id - service id
+     * @param [mixed] service value
+     * @return void
+     */
     public function offsetSet($id, $service)
     {
         $this->services[$id] = $service;
     }
 
+    /**
+     * ArrayAccess interface function
+     *
+     * @param [type] $id - service id
+     * @return void
+     */
     public function offsetUnset($id)
     {
        $this->remove($id);
+    }
+    
+    private function set($id, $service)
+    {
+        $this->services[$id] = $service;
     }
 }
 ?>
