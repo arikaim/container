@@ -29,7 +29,7 @@ $container->add('service_add',function() {
 });
 
 ```
-** Add parameters ** 
+**Add parameters** 
 
 ```php
 
@@ -37,7 +37,7 @@ $container['config'] = "Config value";
 
 ```
 
-** Replace service **  
+**Replace service**  
 
 ```php
 
