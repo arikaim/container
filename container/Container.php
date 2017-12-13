@@ -24,6 +24,11 @@ class Container implements ContainerInterface, \ArrayAccess
 {    
     private $services;
 
+    /**
+     * Container constructor
+     *
+     * @param array $services - container services 
+     */
     public function __construct(array $services = null)
     {        
         if ( is_array($this->services) == true ) {
@@ -36,9 +41,9 @@ class Container implements ContainerInterface, \ArrayAccess
     /**
      * Get service from container
      *
-     * @param [string] $id - srvice id 
-     * @return mixed service or null if not exist
+     * @param string $id - srvice id 
      * @throws ServiceNotFoundException;
+     * @return mixed service or null if not exist
      */
     public function get($id)
     {
@@ -52,8 +57,8 @@ class Container implements ContainerInterface, \ArrayAccess
     /**
      * Check if service exists in container PSR-11 ContainerInterface
      * 
-     * @param [string] $id
-     * @return boolean
+     * @param string $id - service id
+     * @return bool
      */
     public function has($id)
     {
@@ -63,11 +68,11 @@ class Container implements ContainerInterface, \ArrayAccess
     /**
      * Add service to container
      *
-     * @param [string] $id - id of service 
-     * @param [mixed] $service service value 
+     * @param string $id - id of service 
+     * @param mixed $service service value 
      * @param boolean $replace replace service if exists 
-     * @return void
      * @throws ServiceExistsException - if replace is false and  service exists in container
+     * @return void
      */
     public function add($id, $service, $replace = false)
     {
@@ -81,8 +86,8 @@ class Container implements ContainerInterface, \ArrayAccess
     /**
      * Replace service in container
      *
-     * @param [string] $id - service id 
-     * @param [type] $service -service value
+     * @param string $id - service id 
+     * @param mixed $service - service value
      * @return void
      */
     public function replace($id,$service)
@@ -93,7 +98,7 @@ class Container implements ContainerInterface, \ArrayAccess
     /**
      * Remove service from container
      *
-     * @param [string] $id - service id
+     * @param string $id - service id
      * @return void
      */
     public function remove($id)
@@ -114,7 +119,7 @@ class Container implements ContainerInterface, \ArrayAccess
     /**
      * ArrayAccess interface function
      *
-     * @param [string] $id - service id
+     * @param string $id - service id
      * @return bool
      */
     public function offsetExists($id)
@@ -125,7 +130,7 @@ class Container implements ContainerInterface, \ArrayAccess
     /**
      * ArrayAccess interface function
      *
-     * @param [string] $id - service id
+     * @param string $id - service id
      * @return mixed
      */
     public function offsetGet($id)
@@ -136,8 +141,8 @@ class Container implements ContainerInterface, \ArrayAccess
     /**
      * ArrayAccess interface function
      *
-     * @param [string] $id - service id
-     * @param [mixed] service value
+     * @param string $id - service id
+     * @param mixed service value
      * @return void
      */
     public function offsetSet($id, $service)
@@ -148,14 +153,14 @@ class Container implements ContainerInterface, \ArrayAccess
     /**
      * ArrayAccess interface function
      *
-     * @param [type] $id - service id
+     * @param string $id - service id
      * @return void
      */
     public function offsetUnset($id)
     {
        $this->remove($id);
     }
-    
+
     private function set($id, $service)
     {
         $this->services[$id] = $service;
