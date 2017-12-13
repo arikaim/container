@@ -7,7 +7,7 @@
  * @license     MIT License
  */
 
-namespace Arikaim\Cotainer;
+namespace Arikaim\Container;
 
 
 use Psr\Container\ContainerExceptionInterface;
