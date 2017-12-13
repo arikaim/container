@@ -21,7 +21,7 @@ use Psr\Container\ContainerExceptionInterface;
 class ServiceExistsException extends \InvalidArgumentException implements ContainerExceptionInterface
 {    
     public function __construct($id, $code = 0, \Exception $previous = null) {    
-        parent::__construct("Service $id exists.Use replaceService function.", $code, $previous);
+        parent::__construct("Service $id exists. Use replace function.", $code, $previous);
     }
 }
 ?>

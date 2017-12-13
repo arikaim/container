@@ -28,6 +28,15 @@ $container->add('service_add',function() {
     echo "Service add example";
 });
 
+
+$container->add('date',function () {
+    return new \DateTime();
+});
+
+
+$date = $container['date'];
+echo $date->format('Y-m-d');
+
 ```
 **Add parameters** 
 

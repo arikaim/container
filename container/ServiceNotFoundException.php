@@ -21,7 +21,7 @@ use Psr\Container\NotFoundExceptionInterface;
 class ServiceNotFoundException extends \InvalidArgumentException implements NotFoundExceptionInterface
 {    
     public function __construct($id, $code = 0, \Exception $previous = null) {    
-        parent::__construct("Service $id is not exists.", $code, $previous);
+        parent::__construct("Service $id not exists.", $code, $previous);
     }
 }
 ?>

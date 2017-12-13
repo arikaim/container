@@ -47,11 +47,15 @@ class Container implements ContainerInterface, \ArrayAccess
      */
     public function get($id)
     {
-        if ( $this->has($id) == true ) {
-            return $this->services[$id];
+        if ( $this->has($id) == false ) {
+            throw new ServiceNotFoundException($id); 
+            return null;     
         } 
-        throw new ServiceNotFoundException($id);      
-        return null; 
+
+        if ( method_exists($this->services[$id], '__invoke') == true ) {
+            $this->services[$id] = $this->services[$id]($this); 
+        }
+        return $this->services[$id];
     }
 
     /**
@@ -135,7 +139,7 @@ class Container implements ContainerInterface, \ArrayAccess
      */
     public function offsetGet($id)
     {
-        return $this->has($id) ? $this->services[$id] : null;
+        return $this->get($id);
     }
 
     /**
