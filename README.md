@@ -9,36 +9,42 @@ composer require arikaim/container
 # Usage 
 
 ```php 
+
 use Arikaim\Container\Container;
 
 $container = new Container();
+
 ```
 
-Add service to container 
+** Add service to container **
+
 ```php 
+
 $container['service'] = function() {
     echo "Service example";
 };
-```
-or 
 
-```php
 $container->add('service_add',function() {
     echo "Service add example";
 });
+
 ```
-Add parameters 
+** Add parameters ** 
 
 ```php
+
 $container['config'] = "Config value";
+
 ```
 
-Replace service 
+** Replace service **  
 
 ```php
+
 $container->replace('service',function() {
      echo "Replace Service";
 });
+
 ```
 
 **Psr-11** compatibility implement the PSR-11 ContainerInterface
