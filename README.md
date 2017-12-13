@@ -12,33 +12,33 @@ composer require arikaim/container
 use Arikaim\Container\Container;
 
 $container = new Container();
+```
 
 Add service to container 
-
+```php 
 $container['service'] = function() {
     echo "Service example";
 };
-
+```
 or 
-
+```php
 $container->add('service_add',function() {
     echo "Service add example";
 });
-
-add parameters 
-
+```
+Add parameters 
+```php
 $container['config'] = "Config value";
+```
 
-Psr-11   implement the PSR-11 ContainerInterface
+**Psr-11** compatibility implement the PSR-11 ContainerInterface
 
+```php
 $servcie = $container->get('service');
-
-and 
 
 if ( $container->has('service') ) {
     echo "Service exists";
 } else {
     echo "Service not found";
 }
-
 ```
