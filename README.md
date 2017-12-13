@@ -16,7 +16,7 @@ $container = new Container();
 
 ```
 
-** Add service to container **
+**Add service to container**
 
 ```php 
 
