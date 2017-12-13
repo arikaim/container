@@ -21,14 +21,24 @@ $container['service'] = function() {
 };
 ```
 or 
+
 ```php
 $container->add('service_add',function() {
     echo "Service add example";
 });
 ```
 Add parameters 
+
 ```php
 $container['config'] = "Config value";
+```
+
+Replace service 
+
+```php
+$container->replace('service',function() {
+     echo "Replace Service";
+});
 ```
 
 **Psr-11** compatibility implement the PSR-11 ContainerInterface
