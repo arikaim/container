@@ -15,6 +15,8 @@ use Psr\Container\NotFoundExceptionInterface;
 
 /**
  * Service not found in container exception
+ * 
+ * @implements NotFoundExceptionInterface
  */
 class ServiceNotFoundException extends \InvalidArgumentException implements NotFoundExceptionInterface
 {    

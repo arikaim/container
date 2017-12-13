@@ -14,7 +14,9 @@ use Psr\Container\ContainerExceptionInterface;
 
 
 /**
- * Service not found in container exception
+ * Service exists in container exception
+ * 
+ * @implements ContainerExceptionInterface
  */
 class ServiceExistsException extends \InvalidArgumentException implements ContainerExceptionInterface
 {    
