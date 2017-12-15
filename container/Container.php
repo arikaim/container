@@ -1,19 +1,16 @@
 <?php
 /**
- * Arikaim DI
+ * Arikaim Container
  * Dependency injection container component
  * @link        http://www.arikaim.com
  * @copyright   Copyright (c) Konstantin Atanasov <info@arikaim.com>
  * @license     MIT License
  */
-
 namespace Arikaim\Container;
-
 
 use Arikaim\Container\ServiceNotFoundException;
 use Arikaim\Container\ServiceExistsException;
 use Psr\Container\ContainerInterface;
-
 
 /**
  * Dependency injection container.
@@ -31,7 +28,7 @@ class Container implements ContainerInterface, \ArrayAccess
      */
     public function __construct(array $services = null)
     {        
-        if ( is_array($this->services) == true ) {
+        if (is_array($this->services) == true) {
             $this->services = $services;
         } else {
             $this->services = [];  
@@ -47,7 +44,7 @@ class Container implements ContainerInterface, \ArrayAccess
      */
     public function get($id)
     {
-        if ( $this->has($id) == false ) {
+        if ($this->has($id) == false) {
             throw new ServiceNotFoundException($id); 
             return null;     
         } 
@@ -170,4 +167,3 @@ class Container implements ContainerInterface, \ArrayAccess
         $this->services[$id] = $service;
     }
 }
-?>

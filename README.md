@@ -1,12 +1,12 @@
-# Arikaim Container
+## Arikaim Container
 Mini Dependency Injection Container
 
 PSR-11 compatibility
 
-# Installation
-composer require arikaim/container
+## Installation
+> composer require arikaim/container
 
-# Usage 
+## Usage 
 
 ```php 
 
@@ -61,9 +61,11 @@ $container->replace('service',function() {
 ```php
 $servcie = $container->get('service');
 
-if ( $container->has('service') ) {
-    echo "Service exists";
-} else {
-    echo "Service not found";
+if ($container->has('service')) {
+    \\ Service exists
 }
+
 ```
+
+## License 
+MIT License
