@@ -1,17 +1,14 @@
 <?php
 /**
- * Arikaim DI
- * Dependency injection container component
- * @link        http://www.arikaim.com
- * @copyright   Copyright (c) Konstantin Atanasov <info@arikaim.com>
- * @license     MIT License
+ *  Arikaim DI
+ *  Dependency injection container component
+ *  @link        http://www.arikaim.com
+ *  @copyright   Copyright (c) Konstantin Atanasov <info@arikaim.com>
+ *  @license     MIT License
  */
-
-namespace Arikaim\Container;
-
+namespace Arikaim\Container\Exceptions;
 
 use Psr\Container\ContainerExceptionInterface;
-
 
 /**
  * Service exists in container exception

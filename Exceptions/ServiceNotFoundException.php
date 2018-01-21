@@ -6,7 +6,7 @@
  *  @copyright   Copyright (c) Konstantin Atanasov <info@arikaim.com>
  *  @license     MIT License
  */
-namespace Arikaim\Container\Exception;
+namespace Arikaim\Container\Exceptions;
 
 use Psr\Container\NotFoundExceptionInterface;
 

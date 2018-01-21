@@ -1,15 +1,15 @@
 <?php
 /**
- * Arikaim Container
- * Dependency injection container component
- * @link        http://www.arikaim.com
- * @copyright   Copyright (c) Konstantin Atanasov <info@arikaim.com>
- * @license     MIT License
+ *  Arikaim Container
+ *  Dependency injection container component
+ *  @link        http://www.arikaim.com
+ *  @copyright   Copyright (c) Konstantin Atanasov <info@arikaim.com>
+ *  @license     MIT License
  */
 namespace Arikaim\Container;
 
-use Arikaim\Container\ServiceNotFoundException;
-use Arikaim\Container\ServiceExistsException;
+use Arikaim\Container\Exception\ServiceNotFoundException;
+use Arikaim\Container\Exception\ServiceExistsException;
 use Psr\Container\ContainerInterface;
 
 /**
