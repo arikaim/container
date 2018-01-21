@@ -10,18 +10,17 @@
 namespace Arikaim\Container;
 
 
-use Psr\Container\NotFoundExceptionInterface;
+use Psr\Container\ContainerExceptionInterface;
 
 
 /**
- * Service not found in container exception
+ * Service exists in container exception
  * 
- * @implements NotFoundExceptionInterface
+ * @implements ContainerExceptionInterface
  */
-class ServiceNotFoundException extends \InvalidArgumentException implements NotFoundExceptionInterface
+class ServiceExistsException extends \InvalidArgumentException implements ContainerExceptionInterface
 {    
     public function __construct($id, $code = 0, \Exception $previous = null) {    
-        parent::__construct("Service $id not exists.", $code, $previous);
+        parent::__construct("Service $id exists. Use replace function.", $code, $previous);
     }
 }
-?>

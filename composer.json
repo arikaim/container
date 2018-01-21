@@ -8,7 +8,7 @@
     "authors": [
         {
             "name": "Konstantin Atanasov",
-            "email": "sales@intersoft.biz"
+            "email": "info@arikaim.com"
         }
     ],
     "require": {
@@ -16,7 +16,7 @@
         "psr/container": "^1.0"
     },
     "autoload": {
-        "psr-4": { "Arikaim\\Container\\": "container/" }
+        "psr-4": { "Arikaim\\Container\\": "" }
     },
     "minimum-stability": "stable",
     "extra": {
