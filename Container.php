@@ -8,8 +8,8 @@
  */
 namespace Arikaim\Container;
 
-use Arikaim\Container\Exception\ServiceNotFoundException;
-use Arikaim\Container\Exception\ServiceExistsException;
+use Arikaim\Container\Exceptions\ServiceNotFoundException;
+use Arikaim\Container\Exceptions\ServiceExistsException;
 use Psr\Container\ContainerInterface;
 
 /**
