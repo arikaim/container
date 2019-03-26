@@ -27,11 +27,10 @@ class Container implements ContainerInterface, \ArrayAccess
      * @param array $services Container services 
      */
     public function __construct(array $services = null)
-    {        
+    {      
+        $this->services = [];    
         if (is_array($this->services) == true) {
             $this->services = $services;
-        } else {
-            $this->services = [];  
         }
     }
 
@@ -46,12 +45,13 @@ class Container implements ContainerInterface, \ArrayAccess
     {
         if ($this->has($id) == false) {
             throw new ServiceNotFoundException($id); 
-            return null;     
         } 
 
-        if ( method_exists($this->services[$id], '__invoke') == true ) {
-            $this->services[$id] = $this->services[$id]($this); 
+        if (\is_object($this->services[$id]) == false || method_exists($this->services[$id], '__invoke') == false) {
+            return $this->services[$id];
         }
+        $this->services[$id] = $this->services[$id]($this); 
+    
         return $this->services[$id];
     }
 
@@ -77,11 +77,10 @@ class Container implements ContainerInterface, \ArrayAccess
      */
     public function add($id, $service, $replace = false)
     {
-        if ( ($this->has($id) == true) && ($replace == false) ) {           
+        if ($this->has($id) == true && $replace == false) {           
             throw new ServiceExistsException($id);
         }
-        $this->set($id,$service);
-        return true;
+        $this->services[$id] = $service;
     }
 
     /**
@@ -104,7 +103,9 @@ class Container implements ContainerInterface, \ArrayAccess
      */
     public function remove($id)
     {
-        unset($this->services[$id]);
+        if ($this->has($id) == true) {
+            unset($this->services[$id]);
+        }
     }
 
     /**
@@ -125,7 +126,7 @@ class Container implements ContainerInterface, \ArrayAccess
      */
     public function offsetExists($id)
     {
-        return  isset($this->services[$id]);
+        return isset($this->services[$id]);
     }
 
     /**
@@ -160,10 +161,5 @@ class Container implements ContainerInterface, \ArrayAccess
     public function offsetUnset($id)
     {
        $this->remove($id);
-    }
-
-    private function set($id, $service)
-    {
-        $this->services[$id] = $service;
     }
 }
