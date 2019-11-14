@@ -1,3 +1,8 @@
+<p align="center">
+    <img src="https://img.shields.io/github/release/arikaim/container.svg" alt="version: 1.0.0">
+    <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="license: MIT">
+</p>
+
 ## Arikaim Container
 Mini Dependency Injection Container
 

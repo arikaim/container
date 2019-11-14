@@ -15,10 +15,14 @@ use Psr\Container\ContainerInterface;
 /**
  * Dependency injection container.
  * 
- * @implements ContainerInterface, \ArrayAccess
  */
 class Container implements ContainerInterface, \ArrayAccess 
 {    
+    /**
+     * Container items
+     *
+     * @var array
+     */
     private $services;
 
     /**
@@ -32,6 +36,18 @@ class Container implements ContainerInterface, \ArrayAccess
         if (is_array($this->services) == true) {
             $this->services = $services;
         }
+    }
+
+    /**
+     * Get container service
+     *
+     * @param string $id Service id
+     * @param mixed|null $default Default value
+     * @return mixed|null Service or null if not exist
+     */
+    public function getItem($id, $default = null)
+    {
+        return ($this->has($id) == false) ? $default : $this->get($id);
     }
 
     /**
