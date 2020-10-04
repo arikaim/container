@@ -7,13 +7,13 @@ Mini Dependency Injection Container
 
 PSR-11 compatibility
 
-## Installation
+#### Installation
 
 ```sh
     composer require arikaim/container
 ```
 
-## Usage 
+#### Usage 
 
 ```php 
 
@@ -74,5 +74,5 @@ if ($container->has('service')) {
 
 ```
 
-## License 
+#### License 
 MIT License
