@@ -33,7 +33,7 @@ class Container implements ContainerInterface, \ArrayAccess
     public function __construct(array $services = null)
     {      
         $this->services = [];    
-        if (is_array($this->services) == true) {
+        if (\is_array($this->services) == true) {
             $this->services = $services;
         }
     }
@@ -63,7 +63,7 @@ class Container implements ContainerInterface, \ArrayAccess
             throw new ServiceNotFoundException($id); 
         } 
 
-        if (\is_object($this->services[$id]) == false || method_exists($this->services[$id], '__invoke') == false) {
+        if (\is_object($this->services[$id]) == false || \method_exists($this->services[$id], '__invoke') == false) {
             return $this->services[$id];
         }
         $this->services[$id] = $this->services[$id]($this); 
@@ -131,7 +131,7 @@ class Container implements ContainerInterface, \ArrayAccess
      */
     public function getServicesList()
     {
-        return array_keys($this->services);
+        return \array_keys($this->services);
     }
 
     /**

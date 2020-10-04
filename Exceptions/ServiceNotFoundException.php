@@ -22,9 +22,9 @@ class ServiceNotFoundException extends \InvalidArgumentException implements NotF
      *
      * @param integer $id
      * @param integer $code
-     * @param \Exception $previous
+     * @param Exception $previous
      */  
     public function __construct($id, $code = 0, Exception $previous = null) {    
-        parent::__construct("Service $id not exists.", $code, $previous);
+        parent::__construct('Service ' . $id . ' not exists.',$code,$previous);
     }
 }

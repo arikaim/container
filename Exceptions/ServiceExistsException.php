@@ -22,9 +22,9 @@ class ServiceExistsException extends \InvalidArgumentException implements Contai
      *
      * @param integer $id
      * @param integer $code
-     * @param \Exception $previous
+     * @param Exception $previous
      */
     public function __construct($id, $code = 0, Exception $previous = null) {    
-        parent::__construct("Service $id exists. Use replace function.", $code, $previous);
+        parent::__construct('Service ' . $id . ' exists. Use replace function.',$code,$previous);
     }
 }

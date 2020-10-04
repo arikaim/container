@@ -1,15 +1,17 @@
-<p align="center">
-    <img src="https://img.shields.io/github/release/arikaim/container.svg" alt="version: 1.0.0">
-    <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="license: MIT">
-</p>
-
 ## Arikaim Container
+![version: 1.0.0](https://img.shields.io/github/release/arikaim/container.svg)
+![license: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+
+
 Mini Dependency Injection Container
 
 PSR-11 compatibility
 
 ## Installation
-> composer require arikaim/container
+
+```sh
+    composer require arikaim/container
+```
 
 ## Usage 
 
