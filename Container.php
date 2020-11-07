@@ -8,15 +8,18 @@
  */
 namespace Arikaim\Container;
 
-use Arikaim\Container\Exceptions\ServiceNotFoundException;
-use Arikaim\Container\Exceptions\ServiceExistsException;
 use Psr\Container\ContainerInterface;
 
+use Arikaim\Container\ArikaimContainerInterface;
+use Arikaim\Container\Exceptions\ServiceNotFoundException;
+use Arikaim\Container\Exceptions\ServiceExistsException;
+
 /**
+ * 
  * Dependency injection container.
  * 
  */
-class Container implements ContainerInterface, \ArrayAccess 
+class Container implements ContainerInterface, ArikaimContainerInterface, \ArrayAccess 
 {    
     /**
      * Container items
@@ -32,10 +35,7 @@ class Container implements ContainerInterface, \ArrayAccess
      */
     public function __construct(array $services = null)
     {      
-        $this->services = [];    
-        if (\is_array($this->services) == true) {
-            $this->services = $services;
-        }
+        $this->services = $services ?? [];           
     }
 
     /**
@@ -69,6 +69,27 @@ class Container implements ContainerInterface, \ArrayAccess
         $this->services[$id] = $this->services[$id]($this); 
     
         return $this->services[$id];
+    }
+
+    /**
+     * Call service method
+     *
+     * @param string $id
+     * @param string $method
+     * @param array $params
+     * @return mixed|null
+     */
+    public function call($id, $method, array $params = [])
+    {
+        $item = $this->services[$id] ?? null;
+        if (empty($item) == true) {
+            return null;
+        }
+        if (\is_callable([$this,$item]) == true) {
+            return \call_user_func_array([$this,$item],$params);
+        }
+        
+        return null;
     }
 
     /**
