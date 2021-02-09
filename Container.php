@@ -31,11 +31,24 @@ class Container implements ContainerInterface, ArikaimContainerInterface, \Array
     /**
      * Container constructor
      *
-     * @param array $services Container services 
+     * @param array|null $services Container services 
      */
     public function __construct(array $services = null)
     {      
         $this->services = $services ?? [];           
+    }
+
+    /**
+     * Clone container
+     *
+     * @param array $items
+     * @return ContainerInterface
+     */
+    public function clone(array $items)
+    {
+        $services = \array_intersect_key($this->services,\array_flip($items));
+
+        return new Self($services);
     }
 
     /**
@@ -127,7 +140,7 @@ class Container implements ContainerInterface, ArikaimContainerInterface, \Array
      * @param mixed $service Service value
      * @return void
      */
-    public function replace($id,$service)
+    public function replace($id, $service)
     {
         return $this->add($id,$service,true);
     }
