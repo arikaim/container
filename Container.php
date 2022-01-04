@@ -171,45 +171,45 @@ class Container implements ContainerInterface, ArikaimContainerInterface, \Array
     /**
      * ArrayAccess interface function
      *
-     * @param string $id Service id
+     * @param nixed $offset Service id
      * @return bool
      */
-    public function offsetExists($id)
+    public function offsetExists(mixed $offset): bool
     {
-        return isset($this->services[$id]);
+        return isset($this->services[$offset]);
     }
 
     /**
      * ArrayAccess interface function
      *
-     * @param string $id Service id
+     * @param mixed $offset Service id
      * @return mixed
      */
-    public function offsetGet($id)
+    public function offsetGet(mixed $offset): mixed
     {
-        return $this->get($id);
+        return $this->get($offset);
     }
 
     /**
      * ArrayAccess interface function
      *
-     * @param string $id Service id
+     * @param mixed $offset Service id
      * @param mixed Service value
      * @return void
      */
-    public function offsetSet($id, $service)
+    public function offsetSet(mixed $offset, mixed $value): void
     {
-        $this->services[$id] = $service;
+        $this->services[$offset] = $value;
     }
 
     /**
      * ArrayAccess interface function
      *
-     * @param string $id Service id
+     * @param mixed $offset Service id
      * @return void
      */
-    public function offsetUnset($id)
+    public function offsetUnset(mixed $offset): void
     {
-       $this->remove($id);
+       $this->remove($offset);
     }
 }
