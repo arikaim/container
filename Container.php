@@ -174,7 +174,8 @@ class Container implements ContainerInterface, ArikaimContainerInterface, \Array
      * @param nixed $offset Service id
      * @return bool
      */
-    public function offsetExists(mixed $offset): bool
+    #[\ReturnTypeWillChange]
+    public function offsetExists($offset)
     {
         return isset($this->services[$offset]);
     }
@@ -185,7 +186,8 @@ class Container implements ContainerInterface, ArikaimContainerInterface, \Array
      * @param mixed $offset Service id
      * @return mixed
      */
-    public function offsetGet(mixed $offset): mixed
+    #[\ReturnTypeWillChange]
+    public function offsetGet($offset)
     {
         return $this->get($offset);
     }
@@ -197,7 +199,8 @@ class Container implements ContainerInterface, ArikaimContainerInterface, \Array
      * @param mixed Service value
      * @return void
      */
-    public function offsetSet(mixed $offset, mixed $value): void
+    #[\ReturnTypeWillChange]
+    public function offsetSet($offset, $value)
     {
         $this->services[$offset] = $value;
     }
@@ -208,7 +211,8 @@ class Container implements ContainerInterface, ArikaimContainerInterface, \Array
      * @param mixed $offset Service id
      * @return void
      */
-    public function offsetUnset(mixed $offset): void
+    #[\ReturnTypeWillChange]
+    public function offsetUnset($offset)
     {
        $this->remove($offset);
     }
