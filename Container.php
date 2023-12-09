@@ -33,7 +33,7 @@ class Container implements ContainerInterface, ArikaimContainerInterface, \Array
      *
      * @param array|null $services Container services 
      */
-    public function __construct(array $services = null)
+    public function __construct(?array $services = null)
     {      
         $this->services = $services ?? [];           
     }
